@@ -1,0 +1,22 @@
+===========================================================
+----------------------------
+1. API VERSIONING
+----------------------------
+Spring Boot 3 (Traditional Approaches - 4)
+    - Path Versioning -> @GetMapping("/v1/test")
+    - Request Parameter Versioning -> @GetMapping(value = "/test", params = "version=v1")
+    - Header Versioning -> @GetMapping(value = "/test", headers = "API-Version=v1")
+    - MIME/Content Negotiation Versioning -> @GetMapping(value = "/test", produces = "application/vnd.com.anshuit.rekroot.v1+json")
+
+Spring Boot 4 (New API Versioning Support Approaches - 4)
+    - Controller (same for all approaches except path):
+        @GetMapping(value = "/test", version = "v1")
+        @GetMapping(value = "/test", version = "v2")
+
+    - Only the configuration changes.
+        - Path Versioning → configurer.usePathSegment(index) → GET /api/v1/test
+        - Request Parameter Versioning → configurer.useQueryParam("version") → GET /api/test?version=v1
+        - Header Versioning → configurer.useRequestHeader("API-Version") → GET /api/test + API-Version: v1
+        - MIME/Content Negotiation Versioning → configurer.useMediaTypeParameter(mediaType, "v") → GET /api/test + Accept: application/vnd.com.anshuit.rekroot+json;v=1
+
+===========================================================
