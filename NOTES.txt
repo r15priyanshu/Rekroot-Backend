@@ -1,7 +1,7 @@
 ===========================================================
-----------------------------
+-----------------------------------------------------------
 1. API VERSIONING
-----------------------------
+-----------------------------------------------------------
 Spring Boot 3 (Traditional Approaches - 4)
     - Path Versioning -> @GetMapping("/v1/test")
     - Request Parameter Versioning -> @GetMapping(value = "/test", params = "version=v1")
@@ -20,3 +20,26 @@ Spring Boot 4 (New API Versioning Support Approaches - 4)
         - MIME/Content Negotiation Versioning → configurer.useMediaTypeParameter(mediaType, "v") → GET /api/test + Accept: application/vnd.com.anshuit.rekroot+json;v=1
 
 ===========================================================
+-----------------------------------------------------------
+2. H2 DB
+-----------------------------------------------------------
+Add below dependencies : 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-h2console</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+===========================================================
+-----------------------------------------------------------
+3. Configure Global Common API Path
+-----------------------------------------------------------
+Configure it in custom WebMvcConfig Class by overriding configurePathMatch() method.
