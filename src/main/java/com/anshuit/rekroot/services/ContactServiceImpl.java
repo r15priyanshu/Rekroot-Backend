@@ -1,12 +1,16 @@
 package com.anshuit.rekroot.services;
 
 import com.anshuit.rekroot.entities.Contact;
+import com.anshuit.rekroot.enums.ErrorResponseDetailsEnum;
+import com.anshuit.rekroot.exceptions.CustomException;
 import com.anshuit.rekroot.repositories.ContactRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,13 +26,18 @@ public class ContactServiceImpl implements ContactService {
     public Contact createContact(Contact contact) {
         contact.setStatus("NEW");
         contact.setCreatedBy("SYSTEM");
-        contact.setCreatedAt(Instant.now());
+        contact.setCreatedAt(LocalDateTime.now());
         return this.saveOrUpdateContact(contact);
     }
 
     @Override
-    public Contact getContactById(int id) {
-        return null;
+    public Optional<Contact> getContactByIdOptional(int contactId) {
+        return contactRepository.findById(contactId);
+    }
+
+    @Override
+    public Contact getContactById(int contactId) {
+        return getContactByIdOptional(contactId).orElseThrow(() -> new CustomException(HttpStatus.NOT_FOUND, ErrorResponseDetailsEnum.CONTACT_NOT_FOUND_WITH_ID, contactId));
     }
 
     @Override

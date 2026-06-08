@@ -7,11 +7,9 @@ import org.springframework.context.annotation.Description;
 
 @Configuration
 public class GlobalConfig {
-
     @Bean
     @Description("ModelMapper bean")
     ModelMapper modelMapper() {
         return new ModelMapper();
     }
-    
 }

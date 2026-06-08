@@ -3,12 +3,12 @@ package com.anshuit.rekroot.dtos;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 public class CompanyDto {
-    private int id;
+    private int companyId;
 
     private String name;
 
@@ -32,9 +32,9 @@ public class CompanyDto {
 
     private String createdBy;
 
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
     private String updatedBy;
 
-    private Instant updatedAt;
+    private LocalDateTime updatedAt;
 }

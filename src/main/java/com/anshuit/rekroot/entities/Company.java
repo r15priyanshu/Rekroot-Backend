@@ -1,16 +1,11 @@
 package com.anshuit.rekroot.entities;
 
-import java.time.Instant;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "companies")
@@ -20,7 +15,7 @@ import lombok.Setter;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int companyId;
 
     @Column(nullable = false, unique = true)
     private String name;
@@ -47,9 +42,9 @@ public class Company {
     private String createdBy;
 
     @Column(nullable = false)
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
     private String updatedBy;
 
-    private Instant updatedAt;
+    private LocalDateTime updatedAt;
 }
