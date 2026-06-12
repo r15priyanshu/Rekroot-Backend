@@ -111,3 +111,13 @@ Add below dependency:
 
 Annotate your Dto Class with multiple annotations provided by the dependency.
 Create your own exception handlers method in the GlobalExceptionHandler class.
+
+===========================================================
+-----------------------------------------------------------
+6. Setting Up JPA Auditing Feature
+-----------------------------------------------------------
+Create a BASE entity class and mark the BASE entity class with @MappedSuperClass annotation. Also, annotate the fields accordingly with multiple annotations.
+You need to annotate this BASE class with @Entitylisteners(AuditingEntityListener.Class) to tell jpa to start listening to this audit events like createdDate etc.
+Extend the BASE entity class created in above steps in all concrete class ( actual entity classes )
+To populate createdBy and updatedBy column , you need to implement your "auditoraware" by implementing AuditAware(I).
+Finally annotate your application with @EnableJpaAuditing(auditorAwareRef = "auditorAware") , and also tell which auditoraware impl to use.

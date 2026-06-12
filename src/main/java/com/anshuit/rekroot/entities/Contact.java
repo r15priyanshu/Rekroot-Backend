@@ -5,14 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "contacts")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Contact {
+public class Contact extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int contactId;
@@ -28,12 +26,4 @@ public class Contact {
     private String message;
 
     private String status;
-
-    private String createdBy;
-
-    private LocalDateTime createdAt;
-
-    private String updatedBy;
-
-    private LocalDateTime updatedAt;
 }
