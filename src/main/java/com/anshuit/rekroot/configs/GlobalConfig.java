@@ -1,5 +1,9 @@
 package com.anshuit.rekroot.configs;
 
+import com.anshuit.rekroot.dtos.CompanyDto;
+import com.anshuit.rekroot.dtos.JobDto;
+import com.anshuit.rekroot.entities.Company;
+import com.anshuit.rekroot.entities.Job;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +15,12 @@ public class GlobalConfig {
     @Bean
     @Description("ModelMapper bean")
     ModelMapper modelMapper() {
-        return new ModelMapper();
+        ModelMapper mapper = new ModelMapper();
+        return mapper;
     }
 
     @Bean(name = "auditorAware")
-    AuditorAware auditorAware(){
+    AuditorAware auditorAware() {
         return new AuditorAwareImpl();
     }
 }

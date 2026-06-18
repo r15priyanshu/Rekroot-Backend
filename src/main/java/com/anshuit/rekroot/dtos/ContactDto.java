@@ -7,11 +7,9 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
-public class ContactDto {
+public class ContactDto extends BaseEntityDto {
     private int contactId;
 
     @NotBlank(message = "Name cannot be empty,blank space(s) or null.")
@@ -33,12 +31,4 @@ public class ContactDto {
     private String message;
 
     private String status;
-
-    private String createdBy;
-
-    private LocalDateTime createdAt;
-
-    private String updatedBy;
-
-    private LocalDateTime updatedAt;
 }

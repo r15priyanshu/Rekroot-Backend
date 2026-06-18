@@ -30,5 +30,6 @@ public class ErrorResponseDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorCode;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object validationErrors;
 }

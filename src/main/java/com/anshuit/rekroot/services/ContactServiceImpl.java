@@ -28,13 +28,13 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Optional<Contact> getContactByIdOptional(int contactId) {
+    public Optional<Contact> getContactByContactIdOptional(int contactId) {
         return contactRepository.findById(contactId);
     }
 
     @Override
-    public Contact getContactById(int contactId) {
-        return getContactByIdOptional(contactId).orElseThrow(() -> new CustomException(HttpStatus.NOT_FOUND, ErrorResponseDetailsEnum.CONTACT_NOT_FOUND_WITH_ID, contactId));
+    public Contact getContactByContactId(int contactId) {
+        return getContactByContactIdOptional(contactId).orElseThrow(() -> new CustomException(HttpStatus.NOT_FOUND, ErrorResponseDetailsEnum.CONTACT_NOT_FOUND_WITH_ID, contactId));
     }
 
     @Override

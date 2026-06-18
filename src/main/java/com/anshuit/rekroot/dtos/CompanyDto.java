@@ -3,11 +3,11 @@ package com.anshuit.rekroot.dtos;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
-public class CompanyDto {
+public class CompanyDto extends BaseEntityDto {
     private int companyId;
 
     private String name;
@@ -30,11 +30,5 @@ public class CompanyDto {
 
     private String website;
 
-    private String createdBy;
-
-    private LocalDateTime createdAt;
-
-    private String updatedBy;
-
-    private LocalDateTime updatedAt;
+    private List<JobDto> jobs;
 }

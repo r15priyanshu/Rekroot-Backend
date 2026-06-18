@@ -8,9 +8,9 @@ import java.util.Optional;
 public interface ContactService {
     Contact createContact(Contact contact);
 
-    Optional<Contact> getContactByIdOptional(int contactId);
+    Optional<Contact> getContactByContactIdOptional(int contactId);
 
-    Contact getContactById(int contactId);
+    Contact getContactByContactId(int contactId);
 
     List<Contact> getAllContacts();
 }

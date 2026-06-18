@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "companies")
 @Getter
@@ -35,4 +38,7 @@ public class Company extends BaseEntity {
     private int employees;
 
     private String website;
+
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Job> jobs = new ArrayList<>();
 }

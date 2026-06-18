@@ -39,7 +39,7 @@ public class ContactController {
 
     @GetMapping("/contacts/{contactId}")
     public ResponseEntity<ContactDto> getContactById(@Validated @Positive(message = "ContactId must be greater than 0.") @PathVariable int contactId) {
-        Contact contact = contactService.getContactById(contactId);
+        Contact contact = contactService.getContactByContactId(contactId);
         ContactDto contactDto = dataTransferService.mapContactToContactDto(contact);
         return new ResponseEntity<>(contactDto, HttpStatus.OK);
     }
